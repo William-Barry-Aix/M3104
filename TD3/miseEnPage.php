@@ -31,5 +31,36 @@ $dbResult = dbRequest($dbLink, $query);
         }
     ?>
 </table>
+<br>
+<?php
+    $query = 'SELECT date, COUNT(*) as nb FROM user GROUP BY date';
+    $dbResult = dbRequest($dbLink, $query);
+?>
+<table style="border: 1px solid black; border-collapse: collapse">
+    <tr style="background-color:<?php echo ( use_color())?>">
+        <th style="border: 1px solid black; border-collapse: collapse">Nombre d'inscriptions </th>
+        <?php
+
+            while($dbRow = mysqli_fetch_assoc($dbResult)) {
+                echo('<td style="border: 1px solid black; border-collapse: collapse">' . '<img src="rg.jpg" height="' . 25*$dbRow['nb'] . '" width="30" style="margin auto">' . '</td>' . PHP_EOL);
+            }
+        ?>
+    </tr>
+    <tr style="background-color:<?php echo use_color()?>">
+        <th style="border: 1px solid black; border-collapse: collapse">Date</th>
+        <?php
+        $dbResult->data_seek(0);
+        while($dbRow = mysqli_fetch_assoc($dbResult)) {
+            echo('<td style="border: 1px solid black; border-collapse: collapse">' . $dbRow['date'] . '</td>' . PHP_EOL);
+        }
+        ?>
+    </tr>
+    <?php
+
+    ?>
+</table>
+    <img src="image.php"/><br/>
+
+
 
 <?php end_page(); ?>

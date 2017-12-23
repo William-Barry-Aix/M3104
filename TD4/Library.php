@@ -35,7 +35,7 @@ class Library
         return $this->name;
     }
     public function addBook(Book $book){
-        $this->books["$book->getTitle()"] = $book;
+        $this->books[$book->getTitle()] = $book;
     }
     public function remBook(Book $book){
         unset($this->books[$book->getTitle()]);

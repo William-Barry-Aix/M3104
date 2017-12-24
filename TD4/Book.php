@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: b17026741
- * Date: 22/12/17
- * Time: 09:47
- */
 class Book
 {
     private $title;
@@ -19,14 +12,16 @@ class Book
         $this->editor = $editor;
         $this->pageNb = $pageNb;
     }
+
     public function getTitle(){
         return $this->title;
     }
+
     public function getAuthor(){
         return $this->author;
     }
-    public function afficher(){
-         return '<b>' . $this->title . '</b>' . $this->author . $this->editor . $this->pageNb;
-    }
 
+    public function __toString(){
+         return '<b>' . $this->title . ' </b>' . '<br>Autheur: ' .  $this->author . ' ; Editeur: ' . $this->editor . ' ;  Nombre de Pages: ' . $this->pageNb;
+    }
 }
